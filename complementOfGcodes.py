@@ -4,16 +4,21 @@ import sys
 from pygcode import Line
 
 filename1 = sys.argv[1]
-filename2 = sys.argv[2]
+# filename2 = sys.argv[2]
 
 commands = []
 
 with open(filename1, 'r') as f1:
     for lineInFile in f1.readLines():
         line = Line(lineInFile)    #this decodes the gcode line
+        line.block.gcodes
+        line.block.modal_params
+        if line.comment:
+            line.comment.text
         
+    print(*commands, sep = '\n')
 
 
-with open(filename2, 'r') as f2:
-    contentOfGcode2 = f2.read()
+# with open(filename2, 'r') as f2:
+#     contentOfGcode2 = f2.read()
 
