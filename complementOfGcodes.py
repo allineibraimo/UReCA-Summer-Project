@@ -1,22 +1,20 @@
 # This code serves to take in a gcode, extract the functions according to what shape they move in, and keep track of the object's volume as the 
 # extruder moves 
 import sys
-from pygcode import Line
 
-filename1 = sys.argv[1]
+gcode1 = sys.argv[1]
 # filename2 = sys.argv[2]
+
+g0123mov = []
 
 commands = []
 
-with open(filename1, 'r') as f1:
-    for lineInFile in f1.readLines():
-        line = Line(lineInFile)    #this decodes the gcode line
-        line.block.gcodes
-        line.block.modal_params
-        if line.comment:
-            line.comment.text
+with open(gcode1, 'r') as code:
+    command = code.readline()
+    if(command.split()[0] == "G1" or command.split()[0] == "G2" or command.split()[0] == "G3"):
         
-    print(*commands, sep = '\n')
+        
+    print(*command, sep = '\n')
 
 
 # with open(filename2, 'r') as f2:
